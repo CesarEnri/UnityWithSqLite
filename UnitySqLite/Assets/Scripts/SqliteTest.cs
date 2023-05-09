@@ -9,7 +9,7 @@ public class SqliteTest : MonoBehaviour {
 	void Start () {
 
 		// Create database
-		string connection = "URI=file:" + Application.persistentDataPath + "/" + "My_Database";
+		var connection = "URI=file:" + Application.dataPath + "/" + "My_Database";
 		
 		// Open connection
 		IDbConnection dbcon = new SqliteConnection(connection);
@@ -18,7 +18,7 @@ public class SqliteTest : MonoBehaviour {
 		// Create table
 		IDbCommand dbcmd;
 		dbcmd = dbcon.CreateCommand();
-		string q_createTable = "CREATE TABLE IF NOT EXISTS my_table (id INTEGER PRIMARY KEY, val INTEGER )";
+		var q_createTable = "CREATE TABLE IF NOT EXISTS my_table (id INTEGER PRIMARY KEY, val INTEGER )";
 		
 		dbcmd.CommandText = q_createTable;
 		dbcmd.ExecuteReader();
@@ -43,11 +43,6 @@ public class SqliteTest : MonoBehaviour {
 
 		// Close connection
 		dbcon.Close();
-
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }
